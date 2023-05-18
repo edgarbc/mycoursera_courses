@@ -20,3 +20,11 @@ python -m trainer.task -v \
     --training_data_uri="bq://"$PROJECT_ID".titanic.survivors" \
     --test_data_uri="bq://"$PROJECT_ID".titanic.survivors" \
     --validation_data_uri="bq://"$PROJECT_ID".titanic.survivors"
+    
+// create a package
+cd /home/jupyter/titanic
+python setup.py sdist
+
+// copy to GCS
+gsutil cp dist/trainer-0.1.tar.gz "gs://"$BUCKET_NAME"/titanic/dist/trainer-0.1.tar.gz"
+
