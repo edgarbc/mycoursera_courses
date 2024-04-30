@@ -15,3 +15,18 @@ eval_result = evaluator.evaluate_strings(
 )
 
 print(eval_result)
+
+
+custom_criteria = {"simplicity": "Does the language use brevity?", 
+		"bias": "Does the language stay free of human bias?", 
+		"clarity": "Is the writing easy to understand?",
+		"truthfulness": "Is the writing honest and factual?"}
+
+evaluator = load_evaluator("criteria", criteria=custom_criteria, 
+			llm=ChatOpenAI(open_api_key= open_api_key)
+
+eval_result = evluator.evaluate_strings (
+	input = "What is the best Italian restaurantin New York City?", 
+	prediction = "That is a subjective statement and I can not answer that.")
+
+print(eval_result)
